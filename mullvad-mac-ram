@@ -1,0 +1,95 @@
+#!/bin/bash
+#mullvad browser 100% na memória ram, faz cópia para /dev/shm de mullvad zerado original e ao fazer registro de proxies e configurações adicionais, esses metadados são perdidos após desligar o mullvad!
+#precisa deixar o mullvad original na pasta ~/Downloads sem nenhuma configuração para funcionar!
+#Se você configura no mullvad proxies, esses dados ficam lá gravados para caso um ataque físico ocorra, bastará abrir o mullvad e os dados estarão lá!
+
+echo "";
+echo "############################################################################################################################";
+echo "Aviso: Precisa instalar o mullvad browser antes onde a pasta mullvad-browser deve estar em /home/seu_usuario/Downloads/mullvad-browser/ ou ~/Downloads/mullvad-browser/ para funcionar";
+echo "Precisa ter instalado o firejail antes - use sudo apt install firejail -y no debian!";
+echo "Precisa baixa mac-random.html e deixar na pasta ~/Downloads, link: https://github.com/leandroibov/gerador-de-enderecos-mac/blob/main/mac-random.html";
+echo "############################################################################################################################";
+echo;
+echo "ATENÇÃO: Desative a extensão ublock do mullvad em about:addons,e reinicie a page do mac-random.html com f5 ou enter na barra do navegador. O ublock impede o java script do mac-random.html de funcionar!";
+echo;
+echo "Checando firejail, mac-random.html e mullvad-browser no seu sistema...";
+# Função para verificar a presença do Firejail
+check_firejail() {
+    if command -v firejail > /dev/null 2>&1; then
+        echo "Firejail está instalado."
+    else
+        echo "Firejail não está instalado. Por favor, instale-o para uma segurança adicional."
+        exit 1
+    fi
+}
+
+# Função para verificar a presença do Mullvad Browser
+check_mullvad_browser() {
+    local mullvad_path="$HOME/Downloads/mullvad-browser"
+    if [ -d "$mullvad_path" ]; then
+        echo "Mullvad Browser encontrado em $mullvad_path."
+    else
+        echo "Mullvad Browser não encontrado em $mullvad_path. Certifique-se de que o navegador está baixado e extraído corretamente."
+        exit 1
+    fi
+}
+
+# Checando se arquivo mac-random.html está em ~/Downloads
+arquivo="$HOME/Downloads/mac-random.html"
+
+# URL para download do arquivo
+url="https://github.com/leandroibov/gerador-de-enderecos-mac/blob/main/mac-random.html"
+
+# Função para verificar a presença do arquivo mac-random.html
+check_file() {
+    if [ -f "$arquivo" ]; then
+        echo "O arquivo 'mac-random.html' já está presente em $HOME/Downloads."
+    else
+        echo "O arquivo 'mac-random.html' não foi encontrado em $HOME/Downloads."
+        echo "Por favor, baixe o arquivo a partir do seguinte link:"
+        echo "$url"
+        exit 1
+    fi
+}
+
+echo "";
+echo "Copiando ~/Downloads/mullvad-browser para /dev/shm (ram) -> /dev/shm/mullvad-browser/Browser/start-mullvad-browser  ";
+echo "cp -r ~/Downloads/mullvad-browser /dev/shm";
+cp -r ~/Downloads/mullvad-browser /dev/shm;
+echo;
+
+echo "Copiando ~/Downloads/mac-random.html para /dev/shm (ram)";
+echo "cp -r ~/Downloads/mac-random.html /dev/shm";
+cp -r ~/Downloads/mac-random.html /dev/shm;
+echo;
+ "############################################################################################################################";
+echo "Executando mullvad browser na memória ram em failsafe usando o comando firejail para bloquear toda a conexão com a internet por segurança ->";
+echo "Se o navegador estiver hackeado com keylogger, ele não poderá enviar os macs gerados e os que você coletou durante o uso!";
+echo "firejail --noprofile --ipc-namespace --machine-id --novideo --nosound --caps.drop=all --private-tmp --net=none /dev/shm/mullvad-browser/Browser/start-mullvad-browser file:///dev/shm/mac-random.html;";
+echo "############################################################################################################################";
+firejail --noprofile --ipc-namespace --machine-id --novideo --nosound --caps.drop=all --private-tmp --net=none /dev/shm/mullvad-browser/Browser/start-mullvad-browser file:///dev/shm/mac-random.html about:addons;
+#Funciona:
+#firejail --noprofile --net=none /dev/shm/mullvad-browser/Browser/start-mullvad-browser file:///dev/shm/mac-random.html about:addons
+#Funciona:
+#firejail --noprofile --net=none --novideo --nosound /dev/shm/mullvad-browser/Browser/start-mullvad-browser file:///dev/shm/mac-random.html about:addons
+#Funciona sem sandbox, mas precisa ir em about:preferences, ir em network settings e usar um proxy falso para impedir conexão com a internet (menos seguro). Ex: Configuração manual de proxy, 129.0.0.2, porta 23998 (certifique que não tenha esse ip na sua máquina rodando um proxy). Você pode ainda adicionar uma regra no iptables para bloquear o ip 129.0.0.2 e porta 23998. Desative as extensões ublock e outras também.
+#sudo iptables -A INPUT -p tcp -s 129.0.0.2 --dport 23998 -j DROP;
+#sudo iptables -A INPUT -p udp -s 129.0.0.2 --dport 23998 -j DROP;
+#sudo iptables -A OUTPUT -p tcp -d 129.0.0.2 --sport 23998 -j DROP;
+#sudo iptables -A OUTPUT -p udp -d 129.0.0.2 --sport 23998 -j DROP;
+#comando sem sandbox
+#/dev/shm/mullvad-browser/Browser/start-mullvad-browser file:///dev/shm/mac-random.html about:addons about:preferences 
+
+
+echo "";
+echo "############################################################################################################################";
+echo "Limpando memória compartilhada (ram, failsafe)";
+echo "############################################################################################################################";
+echo "rm -rf /dev/shm/mullvad-browser/";
+rm -rf /dev/shm/mullvad-browser/;
+echo "rm -rf /dev/shm/mac-random.html;";
+rm -rf /dev/shm/mac-random.html;
+echo "";
+echo "############################################################################################################################";
+echo "";
+echo "";
