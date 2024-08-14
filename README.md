@@ -23,26 +23,41 @@ ou
 
 #################################################################################
 
-MULLVAD RAM JAIL - PARA USAR O MULLVAD ONLINE MAS EM FIREJAIL E FAILSAFE NA RAM
+MULLVAD RAM JAIL1 - PARA USAR O MULLVAD ONLINE MAS EM FIREJAIL E FAILSAFE NA RAM
+
+Permite ver vídeos e ouvir
+
+MULLVAD RAM JAIL2 - PARA USAR O MULLVAD ONLINE MAS EM FIREJAIL E FAILSAFE NA RAM
+
+Não permite ver vídeo e ouvir ou ouvir música. '--nosound --novideo'
 
 #################################################################################
 
 executar:
 
 
-sudo chmod +x mullvad-ram-jail;
+sudo chmod +x mullvad-ram-jail1;
 
 
-sudo cp -r mullvad-ram-jail /bin;
+sudo chmod +x mullvad-ram-jail2;
 
 
-mullvad-ram-jail
+sudo cp -r mullvad-ram-jail1 /bin;
+
+sudo cp -r mullvad-ram-jail2 /bin;
+
+
+mullvad-ram-jail1
+
+mullvad-ram-jail2
 
 
 ou
 
 
-./mullvad-ram-jail
+./mullvad-ram-jail1
+
+./mullvad-ram-jail2
 
 
 
