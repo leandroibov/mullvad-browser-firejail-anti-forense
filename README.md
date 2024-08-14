@@ -18,6 +18,9 @@ mullvad-mac-ram
 
 ou
 
+na pasta que o script está localizado,
+
+
 ./mullvad-mac-ram
 
 
@@ -53,6 +56,8 @@ mullvad-ram-jail2
 
 
 ou
+
+na pasta que o script está localizado,
 
 
 ./mullvad-ram-jail1
