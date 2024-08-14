@@ -2,6 +2,10 @@ hashs sha256sum
 
 f882b6be104b6ab52ef2b9e16f117ea98401234d0757e26d858633e810fb78af  mullvad-mac-ram
 
+##############################################################################
+[MULLVAD MAC RAM PARA ABRIR OFF LINE O GERADOR DE MACS mac-random.html]
+##############################################################################
+
 executar:
 
 sudo chmod +x mullvad-mac-ram;
@@ -14,7 +18,41 @@ ou
 
 ./mullvad-mac-ram
 
-Detalhes de como usar:
+
+#################################################################################
+
+MULLVAD RAM JAIL - PARA USAR O MULLVAD ONLINE MAS EM FIREJAIL E FAILSAFE NA RAM
+
+#################################################################################
+
+executar:
+
+
+sudo chmod +x mullvad-ram-jail;
+
+
+sudo cp -r mullvad-ram-jail /bin;
+
+
+mullvad-ram-jail
+
+
+ou
+
+
+./mullvad-ram-jail
+
+
+
+
+#################################################################################
+
+
+
+
+Detalhes de como usar o mullvad-mac-ram e mac-random.html:
+
+#################################################################################
 
 
 https://www.traderprofissional.com.br/gerador-de-mac-address-amnesico.html
