@@ -1,0 +1,37 @@
+#!/bin/bash
+#tor browser 100% na memória ram impedindo gravação das bridges em 
+
+echo "";
+echo "############################################################################################################################";
+echo "Aviso: Precisa instalar o mullvad browser antes onde a pasta mullvad-browser deve estar em /home/seu_usuario/Downloads/mullvad-browser/ ou ~/Downloads/mullvad-browser/ para funcionar";
+echo "############################################################################################################################";
+DIRETORIO="$HOME/Downloads/mullvad-browser/"
+# Verifica se o diretório existe
+if [ -d "$DIRETORIO" ]; then
+    echo "Aviso: O diretório '$DIRETORIO' existe."
+else
+    echo "O diretório '$DIRETORIO' não existe. O mullvad não vai funcionar, baixe e instale o mullvad em ~/Downloads do seu linux"
+fi
+#echo "cat ~/Downloads/mullvad-browser/Browser/TorBrowser/Data/Tor/torrc";
+#cat ~/Downloads/mullvad-browser/Browser/TorBrowser/Data/Tor/torrc;
+cp -r ~/Downloads/mullvad-browser/ /dev/shm;
+echo "";
+echo "############################################################################################################################";
+echo "Executando mullvad browser na memória ram em failsafe -> /dev/shm/mullvad-browser/Browser/start-mullvad-browser;";
+echo "############################################################################################################################";
+/dev/shm/mullvad-browser/Browser/start-mullvad-browser;
+echo "";
+echo "############################################################################################################################";
+echo "Limpando memória compartilhada (ram, failsafe)";
+echo "############################################################################################################################";
+echo "rm -rf /dev/shm/mullvad-browser/";
+rm -rf /dev/shm/mullvad-browser/;
+echo "";
+echo "############################################################################################################################";
+echo "Abrindo agora o Mullvad Browser original do HD, SSD ou pendrive, com o comando ~/Downloads/mullvad-browser/Browser/start-mullvad-browser about:preferences. Verifique em "Configurações de Rede ou Netword Settings" se os metadados dos proxies, SOCKS4 ou SOCKS5 utilizados com o mullvad-ram (100% na memória RAM) foram registrados. Se não houver registro, isso significa que os metadados foram eliminados ao apagar /dev/shm/mullvad-browser/ e você está seguro contra levantamento desses dados sensíveis por hackers da análise forense.";
+echo "############################################################################################################################";
+~/Downloads//mullvad-browser/Browser/start-mullvad-browser about:preferences;
+#echo "cat ~/Downloads/mullvad-browser/Browser/TorBrowser/Data/Tor/torrc";
+#cat ~/Downloads/mullvad-browser/Browser/xxxx?;
+#echo "";
+#echo "";

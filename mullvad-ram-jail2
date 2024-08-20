@@ -1,0 +1,73 @@
+#!/bin/bash
+#mullvad browser 100% na memória ram, faz cópia para /dev/shm de mullvad zerado original e ao fazer registro de proxies e configurações adicionais, esses metadados são perdidos após desligar o mullvad!
+#precisa deixar o mullvad original na pasta ~/Downloads com as configurações originais para funcionar!
+#Se você configura no mullvad proxies, esses dados ficam lá gravados e caso um ataque físico ocorra, bastará abrir o mullvad e os dados estarão lá!
+
+#versão para cadastrar mac para mac spoofing com firejail.
+#precisa usar o script mullvad-mac-ram para gerar os macs diversos para mac spoofing.
+
+echo "";
+echo "############################################################################################################################";
+echo "Aviso: Precisa instalar o mullvad browser antes onde a pasta mullvad-browser deve estar em /home/seu_usuario/Downloads/mullvad-browser/ ou ~/Downloads/mullvad-browser/ para funcionar";
+echo "Precisa ter instalado o firejail antes - use sudo apt install firejail -y no debian!";
+echo "############################################################################################################################";
+
+echo "";
+read -rp "Digite o mac desejado para cadastrar no comando firejail para mac spoofing ou não:" mac
+echo "O mac escolhido foi: $mac"
+echo "";
+read -rp "Digite a interface de rede que quer se conectar para cadastrar no comando firejail: " rede
+echo "A interface de rede escolhida foi: $rede"
+echo "";
+
+echo "Checando firejail e mullvad-browser no seu sistema...";
+# Função para verificar a presença do Firejail
+check_firejail() {
+    if command -v firejail > /dev/null 2>&1; then
+        echo "Firejail está instalado."
+    else
+        echo "Firejail não está instalado. Por favor, instale-o para uma segurança adicional."
+        exit 1
+    fi
+}
+
+# Função para verificar a presença do Mullvad Browser
+check_mullvad_browser() {
+    local mullvad_path="$HOME/Downloads/mullvad-browser"
+    if [ -d "$mullvad_path" ]; then
+        echo "Mullvad Browser encontrado em $mullvad_path."
+    else
+        echo "Mullvad Browser não encontrado em $mullvad_path. Certifique-se de que o navegador está baixado e extraído corretamente."
+        exit 1
+    fi
+}
+
+
+
+
+echo "";
+echo "Copiando ~/Downloads/mullvad-browser para /dev/shm (ram) -> /dev/shm/mullvad-browser/Browser/start-mullvad-browser  ";
+echo "cp -r ~/Downloads/mullvad-browser /dev/shm";
+cp -r ~/Downloads/mullvad-browser /dev/shm;
+
+echo "############################################################################################################################";
+echo "Executando mullvad browser na memória ram em failsafe e usando o comando firejail para bloquear e controlar vários recursos!";
+echo "firejail --noprofile --ipc-namespace --machine-id --novideo --nosound --caps.drop=all --private-tmp /dev/shm/mullvad-browser/Browser/start-mullvad-browser;";
+echo "############################################################################################################################";
+firejail --noprofile --ipc-namespace --machine-id --novideo --caps.drop=all --private-tmp --net="$rede" --mac="$mac" /dev/shm/mullvad-browser/Browser/start-mullvad-browser;
+
+
+echo "";
+echo "############################################################################################################################";
+echo "Limpando memória compartilhada (ram, failsafe)";
+echo "############################################################################################################################";
+echo "rm -rf /dev/shm/mullvad-browser/";
+rm -rf /dev/shm/mullvad-browser/;
+echo "";
+echo "############################################################################################################################";
+echo "";
+echo "";
+echo "############################################################################################################################";
+echo "Abrindo agora o Mullvad Browser original do HD, SSD ou pendrive, com o comando ~/Downloads/mullvad-browser/Browser/start-mullvad-browser about:preferences. Verifique em "Configurações de Rede ou Netword Settings" se os metadados dos proxies, SOCKS4 ou SOCKS5 utilizados com o mullvad-ram (100% na memória RAM) foram registrados. Se não houver registro, isso significa que os metadados foram eliminados ao apagar /dev/shm/mullvad-browser/ e você está seguro contra levantamento desses dados sensíveis por hackers da análise forense.";
+echo "############################################################################################################################";
+~/Downloads//mullvad-browser/Browser/start-mullvad-browser about:preferences;
