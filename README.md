@@ -24,17 +24,41 @@ na pasta que o script está localizado,
 ./mullvad-mac-ram
 
 
-#################################################################################
 
-MULLVAD RAM JAIL1 - PARA USAR O MULLVAD ONLINE MAS EM FIREJAIL E FAILSAFE NA RAM
+###################################################################################################
 
-Permite ver vídeos e ouvir
 
-MULLVAD RAM JAIL2 - PARA USAR O MULLVAD ONLINE MAS EM FIREJAIL E FAILSAFE NA RAM
+MULLVAD RAM JAIL1 - PARA USAR O MULLVAD ONLINE MAS EM FIREJAIL, COM MAC SPOOFING E FAILSAFE NA RAM
 
-Não permite ver vídeo e ouvir ou ouvir música. '--nosound --novideo'
 
-#################################################################################
+Não permite ouvir música ou vídeo. Microfone restrito! '--nosound --novideo'
+
+
+MULLVAD RAM JAIL2 - PARA USAR O MULLVAD ONLINE MAS EM FIREJAIL, COM MAC SPOOFING E FAILSAFE NA RAM
+
+
+Permite ver vídeos e ouvir. --novideo.
+
+
+MULLVAD RAM JAIL3 - PARA USAR O MULLVAD ONLINE MAS EM FIREJAIL E FAILSAFE NA RAM (sem cadastrar mac)
+
+
+Não permite ouvir música ou vídeo. Microfone restrito! '--nosound --novideo'
+
+
+MULLVAD RAM JAIL4 - PARA USAR O MULLVAD ONLINE MAS EM FIREJAIL E FAILSAFE NA RAM (sem cadastrar mac)
+
+
+Permite ver vídeos e ouvir.
+
+
+MULLVAD RAM - Abre o mullvad sem firejail 100% na shared memory e apaga assim que finaliza uma sessão!
+
+Arquivo original fica intacto na pasta ~/Downloads
+
+
+###################################################################################################
+
 
 executar:
 
@@ -45,34 +69,77 @@ sudo chmod +x mullvad-ram-jail1;
 sudo chmod +x mullvad-ram-jail2;
 
 
+sudo chmod +x mullvad-ram-jail3;
+
+
+sudo chmod +x mullvad-ram-jail4;
+
+
+sudo chmod +x mullvad-ram;
+
+
 sudo cp -r mullvad-ram-jail1 /bin;
+
 
 sudo cp -r mullvad-ram-jail2 /bin;
 
 
+sudo cp -r mullvad-ram-jail1 /bin;
+
+
+sudo cp -r mullvad-ram-jail2 /bin;
+
+
+sudo cp -r mullvad-ram-jail3 /bin;
+
+
+sudo cp -r mullvad-ram-jail4 /bin;
+
+
+sudo cp -r mullvad-ram /bin;
+
+
 mullvad-ram-jail1
+
 
 mullvad-ram-jail2
 
 
+mullvad-ram-jail3
+
+
+mullvad-ram-jail4
+
+
+mullvad-ram
+
+
 ou
+
 
 na pasta que o script está localizado,
 
 
 ./mullvad-ram-jail1
 
+
 ./mullvad-ram-jail2
 
 
+./mullvad-ram-jail3
+
+
+./mullvad-ram-jail4
+
+
+./mullvad-ram
 
 
 #################################################################################
 
 
-
-
 Detalhes de como usar o mullvad-mac-ram e mac-random.html:
+
 
 #################################################################################
 
