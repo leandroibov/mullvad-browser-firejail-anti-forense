@@ -17,6 +17,9 @@ f882b6be104b6ab52ef2b9e16f117ea98401234d0757e26d858633e810fb78af  mullvad-mac-ra
 
 [MULLVAD MAC RAM PARA ABRIR OFF LINE O GERADOR DE MACS mac-random.html]
 
+
+Precisa fazer download da página mac-random.html e grave em ~/Downloads/ ----> https://github.com/leandroibov/gerador-de-enderecos-mac
+
 ##############################################################################
 
 executar:
