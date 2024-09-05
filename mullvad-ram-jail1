@@ -52,7 +52,7 @@ cp -r ~/Downloads/mullvad-browser /dev/shm;
 
 echo "############################################################################################################################";
 echo "Executando mullvad browser na memória ram em failsafe e usando o comando firejail para bloquear e controlar vários recursos!";
-echo "firejail --noprofile --ipc-namespace --machine-id --novideo --nosound --caps.drop=all --private-tmp /dev/shm/mullvad-browser/Browser/start-mullvad-browser;";
+echo "firejail --noprofile --ipc-namespace --machine-id --novideo --nosound --caps.drop=all --private-tmp --net="$rede" --mac="$mac" /dev/shm/mullvad-browser/Browser/start-mullvad-browser;";
 echo "############################################################################################################################";
 firejail --noprofile --ipc-namespace --machine-id --novideo --nosound --caps.drop=all --private-tmp --net="$rede" --mac="$mac" /dev/shm/mullvad-browser/Browser/start-mullvad-browser;
 
