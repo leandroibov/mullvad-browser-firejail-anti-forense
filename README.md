@@ -1,14 +1,12 @@
 
-##############################################################################
 
-[MULLVAD MAC RAM PARA ABRIR OFF LINE O GERADOR DE MACS mac-random.html]
+# [MULLVAD MAC RAM PARA ABRIR OFF LINE O GERADOR DE MACS mac-random.html]
 
 
 Precisa fazer download da página mac-random.html e grave em ~/Downloads/ ----> https://github.com/leandroibov/gerador-de-enderecos-mac
 
-##############################################################################
 
-executar:
+## executar:
 
 sudo chmod +x mullvad-mac-ram;
 
@@ -25,42 +23,40 @@ na pasta que o script está localizado,
 
 
 
-###################################################################################################
 
 
-MULLVAD RAM JAIL1 - PARA USAR O MULLVAD ONLINE MAS EM FIREJAIL, COM MAC SPOOFING E FAILSAFE NA RAM
+- MULLVAD RAM JAIL1 - PARA USAR O MULLVAD ONLINE MAS EM FIREJAIL, COM MAC SPOOFING E FAILSAFE NA RAM
 
 
 Não permite ouvir música ou vídeo. Microfone restrito! '--nosound --novideo'
 
 
-MULLVAD RAM JAIL2 - PARA USAR O MULLVAD ONLINE MAS EM FIREJAIL, COM MAC SPOOFING E FAILSAFE NA RAM
+- MULLVAD RAM JAIL2 - PARA USAR O MULLVAD ONLINE MAS EM FIREJAIL, COM MAC SPOOFING E FAILSAFE NA RAM
 
 
 Permite ver vídeos e ouvir. --novideo.
 
 
-MULLVAD RAM JAIL3 - PARA USAR O MULLVAD ONLINE MAS EM FIREJAIL E FAILSAFE NA RAM (sem cadastrar mac)
+- MULLVAD RAM JAIL3 - PARA USAR O MULLVAD ONLINE MAS EM FIREJAIL E FAILSAFE NA RAM (sem cadastrar mac)
 
 
 Não permite ouvir música ou vídeo. Microfone restrito! '--nosound --novideo'
 
 
-MULLVAD RAM JAIL4 - PARA USAR O MULLVAD ONLINE MAS EM FIREJAIL E FAILSAFE NA RAM (sem cadastrar mac)
+- MULLVAD RAM JAIL4 - PARA USAR O MULLVAD ONLINE MAS EM FIREJAIL E FAILSAFE NA RAM (sem cadastrar mac)
 
 
 Permite ver vídeos e ouvir.
 
 
-MULLVAD RAM - Abre o mullvad sem firejail 100% na shared memory e apaga assim que finaliza uma sessão!
+- MULLVAD RAM - Abre o mullvad sem firejail 100% na shared memory e apaga assim que finaliza uma sessão!
 
 Arquivo original fica intacto na pasta ~/Downloads
 
 
-###################################################################################################
 
 
-executar:
+# executar:
 
 
 sudo chmod +x mullvad-ram-jail1;
@@ -114,7 +110,7 @@ mullvad-ram-jail4
 mullvad-ram
 
 
-ou
+## ou
 
 
 na pasta que o script está localizado,
@@ -135,13 +131,9 @@ na pasta que o script está localizado,
 ./mullvad-ram
 
 
-#################################################################################
 
 
-Detalhes de como usar o mullvad-mac-ram e mac-random.html:
-
-
-#################################################################################
+## Detalhes de como usar o mullvad-mac-ram e mac-random.html:
 
 
 https://www.traderprofissional.com.br/gerador-de-mac-address-amnesico.html
@@ -187,25 +179,9 @@ Depois de terminar, ao desligar o Mullvad Browser, tudo desaparecerá na memóri
 
 
 
-##################################################################################################
+# Doe monero para nos ajudar: (donate XMR)
 
-Doe monero para nos ajudar: 87JGuuwXzoMGwQAcSD7cvS7D7iacPpN2f5bVqETbUvCgdEmrPZa12gh5DSiKKRgdU7c5n5x1UvZLj8PQ7AAJSso5CQxgjak
-
-Aprenda conosco pelos cursos gravados online e grupo de sinais:
-
-https://traderprofissional.com.br/comprar_nossos_cursos.aspx 
-
-Página oficial de segurança digital:
-
-https://traderprofissional.com.br/seguranca-digital.aspx
-
-
-##################################################################################################
-
-
-Doe monero para nos ajudar: 
-
-87JGuuwXzoMGwQAcSD7cvS7D7iacPpN2f5bVqETbUvCgdEmrPZa12gh5DSiKKRgdU7c5n5x1UvZLj8PQ7AAJSso5CQxgjak
+    87JGuuwXzoMGwQAcSD7cvS7D7iacPpN2f5bVqETbUvCgdEmrPZa12gh5DSiKKRgdU7c5n5x1UvZLj8PQ7AAJSso5CQxgjak
 
 
 Página oficial de segurança digital:
